@@ -9,6 +9,8 @@ public class MeshGenerator : MonoBehaviour
 	[SerializeField] private int _zSize = 512;
 
 	[SerializeField] private float _spacing = 0.5f;
+	
+	[SerializeField] private float _maxHeight = 20f;
 
 	private Vector3[] _vertices;
 	[SerializeField] private MeshFilter _terrainFilter;
@@ -35,7 +37,7 @@ public class MeshGenerator : MonoBehaviour
 			for (int x = 0; x <= _xSize; x++, i++) {
 				_vertices[i] = new Vector3(x * _spacing, 0, z * _spacing);
 				tangents[i] = tangent;
-				uv[i] = new Vector2((float)x / _xSize, (float)z / _zSize);
+				uv[i] = new Vector2((x + 0.5f) / (_xSize + 1), (z + 0.5f) / (_zSize + 1));
 			}
 		}
 		mesh.vertices = _vertices;
@@ -52,6 +54,8 @@ public class MeshGenerator : MonoBehaviour
 			}
 		}
 		mesh.triangles = triangles;
+		float w = _xSize * 0.5f, l = _zSize * 0.5f;
+        mesh.bounds = new Bounds(new Vector3(w / 2, _maxHeight / 2, l / 2), new Vector3(w, _maxHeight, l));
 		mesh.RecalculateNormals();
 
 		return mesh;

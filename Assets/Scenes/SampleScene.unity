@@ -464,6 +464,7 @@ MonoBehaviour:
   _xSize: 512
   _zSize: 512
   _spacing: 0.5
+  _maxHeight: 20
   _terrainFilter: {fileID: 1385743951}
   _waterFilter: {fileID: 1527384479}
 --- !u!4 &1340264802
@@ -614,7 +615,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 0}
+  - {fileID: 2100000, guid: 7b9fd83f168af154db65fb92a94140b5, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
